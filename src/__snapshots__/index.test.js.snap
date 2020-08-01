@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`trims all unnecessary spaces 1`] = `
+"# Title
+
+\`code\`
+
+\`code  with 2  spaces\`
+
+\`     const param = [  1, 2,   3 ]     \`
+
+\`const param = false\`
+
+\`\`\`
+const block =  true
+\`\`\`
+
+Paragraph with **bold** text.
+
+Paragraph with **_bold italic_** text:
+
+Paragraph with [link with spaces](https://link.com)
+
+Paragraph with image ![caption with spaces](https://images.com/demo.png)
+
+Paragraph with _italic_ text.
+
+-   List 1
+-   List 2
+"
+`;
