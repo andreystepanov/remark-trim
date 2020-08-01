@@ -37,7 +37,7 @@ function onnode(node, index, parent) {
     }
   }
 
-  if (node.type !== 'inlineCode') {
+  if (node.type !== 'inlineCode' && value) {
     value = value.replace(/\s\s+/g, ' ')
   }
 
