@@ -7,7 +7,7 @@ exports[`trims all unnecessary spaces 1`] = `
 
 \`code  with 2  spaces\`
 
-\`     const param = [  1, 2,   3 ]     \`
+\`    const param = [  1, 2,   3 ]    \`
 
 \`const param = false\`
 

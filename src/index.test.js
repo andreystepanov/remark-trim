@@ -9,7 +9,7 @@ const data = `
 
  \` code  with 2  spaces \`
 
-\`     const param = [  1, 2,   3 ]     \`
+\`\xa0\xa0\xa0\xa0const param = [  1, 2,   3 ]\xa0\xa0\xa0\xa0\`
 
 \` const param = false  \`
 
@@ -46,6 +46,5 @@ test('defined', () => {
 
 test('trims all unnecessary spaces', () => {
   const md = parse(data)
-  // console.log(md)
   expect(md).toMatchSnapshot()
 })

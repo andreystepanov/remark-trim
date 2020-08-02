@@ -21,7 +21,7 @@ function onnode(node, index, parent) {
   if (
     ['strong', 'emphasis', 'link'].includes(type) ||
     (type === 'paragraph' && node.type === 'image') ||
-    (node.type === 'inlineCode' && /^\s{4}.*\s{4}$/.test(value) === false)
+    (node.type === 'inlineCode' && /^\s{4,}.*\s{4,}$/.test(value) === false)
   ) {
     value = value.trim()
   } else if (type === 'paragraph' && node.type === 'text') {
