@@ -1,6 +1,6 @@
 {
   "name": "remark-trim",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Remark plugin to trim unnecessary spaces from `strong`, `emphasis`, `inlineCode`, `image` and `url` nodes",
   "main": "dist/index.js",
   "scripts": {
