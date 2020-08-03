@@ -23,20 +23,25 @@ function onnode(node, index, parent) {
     (type === 'paragraph' && node.type === 'image') ||
     (node.type === 'inlineCode' && /^\s{4,}.*\s{4,}$/.test(value) === false)
   ) {
-    value = value.trim()
+    value = index < children.length - 1 ? value.trimLeft() : value.trim()
   } else if (type === 'paragraph' && node.type === 'text') {
     // trim spaces at the start of the paragraph
     if (index === 0) {
       value = value.trimLeft()
-    } else if (
+    } else if (index === children.length - 1) {
+      value = value.trimRight()
+    }
+
+    if (
       // if it's the last element in paragraph and it has extra spaces
       index === children.length - 1 &&
-      /\s{0,}[.,:-]\s{0,}?$/.test(value)
+      /\s{0,}[.,:]\s{0,}?$/.test(value)
     ) {
-      value = value.replace(/\s{0,}?([.,:-])\s{0,}?$/, '$1')
+      value = value.replace(/\s{0,}?([.,:])\s{0,}?$/, '$1')
     }
   }
 
+  // /\r?\n|\r/.test(value) === false
   if (node.type !== 'inlineCode' && value) {
     value = value.replace(/\s\s+/g, ' ')
   }
