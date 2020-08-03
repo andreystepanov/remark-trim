@@ -52,6 +52,6 @@ test('defined', () => {
 
 test('trims all unnecessary spaces', () => {
   const md = parse(data)
-  console.log(md)
-  // expect(md).toMatchSnapshot()
+  // console.log(md)
+  expect(md).toMatchSnapshot()
 })

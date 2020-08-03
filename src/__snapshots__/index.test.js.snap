@@ -19,11 +19,17 @@ Paragraph with **bold** text.
 
 Paragraph with **_bold italic_** text:
 
-Paragraph with [link with spaces](https://link.com)
+_Paragraph with [link with spaces](https://link.com). Some oher text follows..._
 
 Paragraph with image ![caption with spaces](https://images.com/demo.png)
 
 Paragraph with _italic_ text.
+
+Paragraph with _italic_ text,
+
+Paragraph with text - 
+
+**Paragraph with**line break
 
 -   List 1
 -   List 2
