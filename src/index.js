@@ -22,13 +22,18 @@ function onnode(node, index, parent) {
   const isInlineCode = node.type === 'inlineCode'
 
   if (isImage) {
-    value = node.alt.trim()
+    value = node.alt
+
+    if (value) {
+      value = value.trim()
+    }
   }
 
   if (
-    ['strong', 'emphasis', 'link'].includes(type) ||
-    (type === 'paragraph' && ['image', 'text'].includes(node.type)) ||
-    (isInlineCode && /^\s{4,}.*\s{4,}$/.test(value) === false)
+    value &&
+    (['strong', 'emphasis', 'link'].includes(type) ||
+      (type === 'paragraph' && ['image', 'text'].includes(node.type)) ||
+      (isInlineCode && /^\s{4,}.*\s{4,}$/.test(value) === false))
   ) {
     if (onlyChild) {
       value = value.trim()
