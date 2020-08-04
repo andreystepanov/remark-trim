@@ -31,10 +31,12 @@ Paragraph with  * italic\xa0\xa0\xa0*\xa0\xa0\xa0text\xa0,\xa0\xa0
 
 Paragraph with text\xa0\xa0-\xa0\xa0
 
-**Paragraph with \n**line break
+**Paragraph with **\n\xa0\xa0line break
 
 -   List 1
 -  List   2
+
+*You can follow me here on  [Medium](https://medium.com/@jinsonvarghese)  or  [my website](https://www.jinsonvarghese.com)  for more stories about the various Security Audits I do and the crazy vulnerabilities I find, as well as on  [Twitter](https://twitter.com/JinsonCyberSec)  for more Cybersecurity related news.*
 `
 
 function parse(data, options) {

@@ -2,6 +2,8 @@ import visit from 'unist-util-visit'
 
 export default function trim(options) {
   return function transform(tree, vfile) {
+    // console.log(JSON.stringify(tree, null, 3))
+
     visit(
       tree,
       node => ['text', 'inlineCode', 'image'].includes(node.type),
@@ -13,42 +15,42 @@ export default function trim(options) {
 function onnode(node, index, parent) {
   let value = node.value
   const { type, children } = parent
+  const onlyChild = children.length === 1
+  const first = index === 0 && !onlyChild
+  const last = index === children.length - 1 && !onlyChild
+  const isImage = node.type === 'image'
+  const isInlineCode = node.type === 'inlineCode'
 
-  if (node.type === 'image') {
-    value = node.alt
+  if (isImage) {
+    value = node.alt.trim()
   }
 
   if (
     ['strong', 'emphasis', 'link'].includes(type) ||
-    (type === 'paragraph' && node.type === 'image') ||
-    (node.type === 'inlineCode' && /^\s{4,}.*\s{4,}$/.test(value) === false)
+    (type === 'paragraph' && ['image', 'text'].includes(node.type)) ||
+    (isInlineCode && /^\s{4,}.*\s{4,}$/.test(value) === false)
   ) {
-    value = index < children.length - 1 ? value.trimLeft() : value.trim()
-  } else if (type === 'paragraph' && node.type === 'text') {
-    // trim spaces at the start of the paragraph
-    if (index === 0) {
+    if (onlyChild) {
+      value = value.trim()
+    } else if (first) {
       value = value.trimLeft()
-    } else if (index === children.length - 1) {
+    } else if (last) {
       value = value.trimRight()
     }
+  }
 
-    if (
-      // if it's the last element in paragraph and it has extra spaces
-      index === children.length - 1 &&
-      /\s{0,}[.,:]\s{0,}?$/.test(value)
-    ) {
-      value = value.replace(/\s{0,}?([.,:])\s{0,}?$/, '$1')
-    }
+  if (
+    // if it's the last element in paragraph and it has extra spaces
+    last &&
+    /\s{0,}[.,:]\s{0,}?$/.test(value)
+  ) {
+    value = value.replace(/\s{0,}?([.,:])\s{0,}?$/, '$1')
   }
 
   // /\r?\n|\r/.test(value) === false
-  if (node.type !== 'inlineCode' && value) {
+  if (!isInlineCode && value) {
     value = value.replace(/\s\s+/g, ' ')
   }
 
-  if (node.type === 'image') {
-    node.alt = value
-  } else {
-    node.value = value
-  }
+  node[isImage ? 'alt' : 'value'] = value
 }

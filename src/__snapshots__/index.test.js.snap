@@ -27,11 +27,13 @@ Paragraph with _italic_ text.
 
 Paragraph with _italic_ text,
 
-Paragraph with text - 
+Paragraph with text -
 
-**Paragraph with**line break
+**Paragraph with** line break
 
 -   List 1
 -   List 2
+
+_You can follow me here on [Medium](https://medium.com/@jinsonvarghese) or [my website](https://www.jinsonvarghese.com) for more stories about the various Security Audits I do and the crazy vulnerabilities I find, as well as on [Twitter](https://twitter.com/JinsonCyberSec) for more Cybersecurity related news._
 "
 `;
